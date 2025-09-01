@@ -38,7 +38,7 @@ public class ParallaxController : MonoBehaviour
         if (Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureUnitSizeX)
             {
                 float offestPositionX = (cameraTransform.position.x - transform.position.x) % textureUnitSizeX;
-                transform.position = new Vector3(cameraTransform.position.x + offestPositionX, transform.position.y);
+                transform.position = new Vector2(cameraTransform.position.x + offestPositionX, transform.position.y);
             }
 
         }
@@ -48,7 +48,7 @@ public class ParallaxController : MonoBehaviour
             if (Mathf.Abs(cameraTransform.position.y - transform.position.y) >= textureUnitSizeY)
             {
                 float offestPositionY = (cameraTransform.position.y - transform.position.y) % textureUnitSizeY;
-                transform.position = new Vector3(transform.position.x, cameraTransform.position.y + offestPositionY);
+                transform.position = new Vector2(transform.position.x, cameraTransform.position.y + offestPositionY);
             }
 
         }
