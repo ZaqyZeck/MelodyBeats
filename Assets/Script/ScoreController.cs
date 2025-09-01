@@ -23,6 +23,11 @@ public class ScoreController : MonoBehaviour
         SaveSystem.SaveScoresData(scores);
     }
 
+    public void DeleteAllScores()
+    {
+        SaveSystem.DeleteScoresData();
+    }
+
     public void LoadSaveScores()
     {
         ScoresData scoresData = SaveSystem.LoadScores();
@@ -53,6 +58,14 @@ public class ScoresData
     public List<string> name;
     public List<DateTime> scoreDate;
     public List<char> grade;
+
+    public ScoresData()
+    {
+        score = new List<int>();
+        name = new List<string>();
+        scoreDate = new List<DateTime>();
+        grade = new List<char>();
+    }
 
     public ScoresData(List<Score> Scores)
     {

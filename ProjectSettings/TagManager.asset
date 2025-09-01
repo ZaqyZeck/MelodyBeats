@@ -7,6 +7,7 @@ TagManager:
   - target
   - ArrowBox
   - FinishLine
+  - SwitchBox
   layers:
   - Default
   - TransparentFX

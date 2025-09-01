@@ -10,6 +10,8 @@ public class ScoreCounter : MonoBehaviour
     [SerializeField] private Text successCounter;
     [SerializeField] private Text perfectCounter;
     [SerializeField] private Text failedCounter;
+    [SerializeField] private TMP_Text[] scoreCounter;
+    [SerializeField] private TMP_Text timeCounter;
 
     [SerializeField] private TMP_InputField playerNameInput;
     [SerializeField] private GameObject textname, textscore, texttime;
@@ -22,20 +24,33 @@ public class ScoreCounter : MonoBehaviour
     {
         success++;
         successCounter.text = $"sukses = {success}";
-        scoreController.currentScore += 100; 
+        scoreController.currentScore += 100;
+        UpdateScoreCounter();
     }
     public void AddPerfect()
     {
         perfect++;
         perfectCounter.text = $"perfect = {perfect}";
         scoreController.currentScore += 200;
+        UpdateScoreCounter();
     }
 
     public void AddFailed()
     {
         failed++;
         failedCounter.text = $"gagal = {failed}";
-        scoreController.currentScore -= 50;
+        if(scoreController.currentScore <= 50) scoreController.currentScore = 0 ;
+        else scoreController.currentScore -= 50;
+        UpdateScoreCounter();
+    }
+
+    public void UpdateScoreCounter()
+    {
+        foreach (var text in scoreCounter)
+        {
+            if (text != null)
+                text.text = $"Score = {scoreController.currentScore}";
+        }
     }
 
     public void SetScore()
@@ -50,6 +65,7 @@ public class ScoreCounter : MonoBehaviour
     public void SetScoreTime()
     {
         scoreController.finishTime = DateTime.Now;
+        timeCounter.text = $"Time = {scoreController.finishTime:HH:mm:ss}";
     }
 
     public void ShowAllScores()

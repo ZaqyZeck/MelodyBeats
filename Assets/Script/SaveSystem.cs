@@ -17,6 +17,18 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void DeleteScoresData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/score.dt";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        ScoresData scoresData = new ScoresData();
+
+        formatter.Serialize(stream, scoresData);
+        stream.Close();
+    }
+
     public static ScoresData LoadScores()
     {
         string path = Application.persistentDataPath + "/score.dt";
