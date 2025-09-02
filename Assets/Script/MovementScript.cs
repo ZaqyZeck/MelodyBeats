@@ -1,4 +1,7 @@
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovementScript : MonoBehaviour
 {
@@ -22,6 +25,14 @@ public class MovementScript : MonoBehaviour
     [SerializeField] private LineController lineController;
     [SerializeField] private GameObject lineParent;
 
+    [SerializeField] private Transform sprite;
+
+    public float energy = 100;
+    [SerializeField] private RectTransform energtUI;
+
+    public int combo;
+    [SerializeField] private Text textCombo;
+
     void Start()
     {
         // arah awal: kanan +45 derajat
@@ -35,6 +46,8 @@ public class MovementScript : MonoBehaviour
     void Update()
     {
         if (!canMove) return;
+
+        SetEnergyUI();
 
         if (planeMode)
         {
@@ -86,6 +99,11 @@ public class MovementScript : MonoBehaviour
         {
             SwitchMode();
         }
+        else if (currentCollision.gameObject.CompareTag("DeathBox"))
+        {
+            gameManager.FinishGame();
+            canMove = false;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -112,8 +130,17 @@ public class MovementScript : MonoBehaviour
 
     void RegisterSuccess()
     {
-        if (CheckDistance(currentCollision.gameObject)) counter.AddPerfect();
-        else counter.AddSuccess();
+        if (CheckDistance(currentCollision.gameObject))
+        {
+            addEnergy(20);
+            counter.AddPerfect();
+        }  
+        else
+        {
+            addEnergy(10);
+            counter.AddSuccess();
+        }
+
         Destroy(currentCollision.gameObject);
         currentCollision = null;
     }
@@ -130,6 +157,7 @@ public class MovementScript : MonoBehaviour
 
     void SwitchMode()
     {
+        //if(moveUp) ChangeDirection();
         planeMode = !planeMode;
         arrowMode = !arrowMode;
         
@@ -139,9 +167,14 @@ public class MovementScript : MonoBehaviour
         {
             blockBody.gravityScale = 0;
             
-        }
+        }   
+        else
+        {
+            //transform.rotation = Quaternion.identity; // kenapa saat aku tambahkan kode ini method jadi rusak
+            blockBody.gravityScale = 3;
+            sprite.rotation = Quaternion.identity;
             
-        else blockBody.gravityScale = 3;
+        }  
     }
 
     void CreateLinePoint()
@@ -154,19 +187,38 @@ public class MovementScript : MonoBehaviour
         if (planeMode) lineController.AttachPlayer();
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "target")
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.Space))
-    //        {
-    //            if (moveUp)
-    //                SetDirection(-45f); // kanan-bawah
-    //            else
-    //                SetDirection(45f);  // kanan-atas
+    private void SetEnergyUI()
+    {
+        energy -= Time.deltaTime * 5;
 
-    //            moveUp = !moveUp;
-    //        }
-    //    }
-    //}
+        if (energy < 0) energy = 0;
+
+        float maxWidth = 500f;
+        Vector2 size = energtUI.sizeDelta;
+        size.x = maxWidth * (energy / 100f);
+        energtUI.sizeDelta = size;
+    }
+
+    public void addEnergy(float energyPlus)
+    {
+        if (combo > 5) energyPlus +=10;
+        if (energy + energyPlus > 100) energy = 100;
+        else energy += energyPlus;
+
+        AddCombo(true);
+    }
+
+    public void AddCombo(bool success)
+    {
+        if (success)
+        {
+            combo++;
+        }
+        else
+        {
+            combo = 0;
+        }
+
+        textCombo.text = $"combo = {combo}";
+    }
 }

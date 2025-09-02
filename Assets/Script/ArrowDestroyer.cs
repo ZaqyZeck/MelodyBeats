@@ -9,6 +9,13 @@ public class ArrowDestroyer : MonoBehaviour
     [SerializeField] private float speed = 5f; // kecepatan mengejar
     [SerializeField] private float offsetX = -5f; // offset ke kiri
 
+    private MovementScript playerMovement;
+
+    private void Awake()
+    {
+        playerMovement = target.GetComponent<MovementScript>();
+    }
+
     private void Update()
     {
         if (target == null) return;
@@ -25,6 +32,9 @@ public class ArrowDestroyer : MonoBehaviour
         if (collision.CompareTag("ArrowBox"))
         {
             counter.AddFailed();
+            
+            playerMovement.addEnergy(-10);
+            playerMovement.AddCombo(false);
             Destroy(collision.gameObject);
         }
     }
