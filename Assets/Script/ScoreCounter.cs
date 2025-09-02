@@ -20,6 +20,9 @@ public class ScoreCounter : MonoBehaviour
 
     public int success, failed, perfect;
 
+    public int combo;
+    [SerializeField] private Text textCombo;
+
     public void AddSuccess()
     {
         success++;
@@ -42,6 +45,19 @@ public class ScoreCounter : MonoBehaviour
         if(scoreController.currentScore <= 50) scoreController.currentScore = 0 ;
         else scoreController.currentScore -= 50;
         UpdateScoreCounter();
+    }
+
+    public void AddCombo(bool success)
+    {
+        if (success)
+        {
+
+            combo++;
+            if (combo > 5) scoreController.currentScore += 100;
+
+        }
+        else combo = 0;
+        textCombo.text = $"Combo = {combo}";
     }
 
     public void UpdateScoreCounter()

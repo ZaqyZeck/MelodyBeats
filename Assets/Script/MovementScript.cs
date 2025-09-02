@@ -29,9 +29,7 @@ public class MovementScript : MonoBehaviour
 
     public float energy = 100;
     [SerializeField] private RectTransform energtUI;
-
-    public int combo;
-    [SerializeField] private Text textCombo;
+    [SerializeField] private ParticleSystem dust;
 
     void Start()
     {
@@ -166,13 +164,14 @@ public class MovementScript : MonoBehaviour
         if (planeMode)
         {
             blockBody.gravityScale = 0;
-            
+            dust.Pause();
         }   
         else
         {
             //transform.rotation = Quaternion.identity; // kenapa saat aku tambahkan kode ini method jadi rusak
             blockBody.gravityScale = 3;
             sprite.rotation = Quaternion.identity;
+            dust.Play(true);
             
         }  
     }
@@ -201,7 +200,7 @@ public class MovementScript : MonoBehaviour
 
     public void addEnergy(float energyPlus)
     {
-        if (combo > 5) energyPlus +=10;
+        //if (combo > 5) energyPlus +=10;
         if (energy + energyPlus > 100) energy = 100;
         else energy += energyPlus;
 
@@ -210,15 +209,7 @@ public class MovementScript : MonoBehaviour
 
     public void AddCombo(bool success)
     {
-        if (success)
-        {
-            combo++;
-        }
-        else
-        {
-            combo = 0;
-        }
-
-        textCombo.text = $"combo = {combo}";
+        counter.AddCombo(success);
+        //textCombo.text = $"combo = {combo}";
     }
 }
