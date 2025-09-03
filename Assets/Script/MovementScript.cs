@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal.Commands;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class MovementScript : MonoBehaviour
 
     public float energy = 100;
     [SerializeField] private RectTransform energtUI;
-    [SerializeField] private ParticleSystem dust;
+    //[SerializeField] private ParticleSystem dust;
 
     void Start()
     {
@@ -45,6 +46,10 @@ public class MovementScript : MonoBehaviour
     {
         if (!canMove) return;
 
+        Vector3 moveDelta = planeMode ? (Vector3)(direction * speed * Time.deltaTime)
+                                  : (Vector3)(Vector2.right * speed * Time.deltaTime);
+        transform.position += moveDelta;
+
         SetEnergyUI();
 
         if (planeMode)
@@ -53,13 +58,21 @@ public class MovementScript : MonoBehaviour
             {
                 ChangeDirection();
                 CreateLinePoint();
+
+                if (currentCollision == null)
+                {
+                }
+                else if (currentCollision.gameObject.CompareTag("ScoreBox"))
+                {
+                    RegisterSuccess();
+                }
             }
             // Gerakkan object terus ke arah yang sudah ditentukan
-            transform.position += (Vector3)(direction * speed * Time.deltaTime);
+            //transform.position += (Vector3)(direction * speed * Time.deltaTime);
         }
         else
         {
-            transform.position += (Vector3)(Vector2.right * speed * Time.deltaTime);
+            //transform.position += (Vector3)(Vector2.right * speed * Time.deltaTime);
 
             if (currentCollision == null) return;
 
@@ -97,11 +110,16 @@ public class MovementScript : MonoBehaviour
         {
             SwitchMode();
         }
-        else if (currentCollision.gameObject.CompareTag("DeathBox"))
+        if (collision.gameObject.CompareTag("DeathBox"))
         {
             gameManager.FinishGame();
             canMove = false;
         }
+        //else if (collision.gameObject.CompareTag("ScoreBox"))
+        //{
+            
+        //}
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -139,13 +157,15 @@ public class MovementScript : MonoBehaviour
             counter.AddSuccess();
         }
 
-        Destroy(currentCollision.gameObject);
+        currentCollision.gameObject.SetActive(false);
         currentCollision = null;
     }
 
     bool CheckDistance(GameObject arrow)
     {
-        float distance = Vector2.Distance(arrow.transform.position, transform.position);
+        Vector2 boxPosition = new Vector2(arrow.transform.position.x, 0f);
+        Vector2 playerPosition = new Vector2(transform.position.x, 0f);
+        float distance = Vector2.Distance(boxPosition, playerPosition);
         if (distance < perfectDistance)
         {
             return true;
@@ -164,14 +184,14 @@ public class MovementScript : MonoBehaviour
         if (planeMode)
         {
             blockBody.gravityScale = 0;
-            dust.Pause();
+            //dust.Pause();
         }   
         else
         {
             //transform.rotation = Quaternion.identity; // kenapa saat aku tambahkan kode ini method jadi rusak
             blockBody.gravityScale = 3;
             sprite.rotation = Quaternion.identity;
-            dust.Play(true);
+            //dust.Play(true);
             
         }  
     }
@@ -188,7 +208,7 @@ public class MovementScript : MonoBehaviour
 
     private void SetEnergyUI()
     {
-        energy -= Time.deltaTime * 5;
+        energy -= Time.deltaTime * 10;
 
         if (energy < 0) energy = 0;
 
@@ -211,5 +231,15 @@ public class MovementScript : MonoBehaviour
     {
         counter.AddCombo(success);
         //textCombo.text = $"combo = {combo}";
+    }
+
+    public void ClearCollision()
+    {
+        currentCollision = null;
+    }
+
+    public Collider2D GetCurrentCollision()
+    {
+        return currentCollision;
     }
 }

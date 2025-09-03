@@ -20,11 +20,9 @@ public class ArrowDestroyer : MonoBehaviour
     {
         if (target == null) return;
 
-        // Posisi target dengan offset ke kiri (relatif sumbu X dunia)
         Vector3 targetPos = target.transform.position + new Vector3(offsetX, 0, 0);
-
-        // Smooth follow menuju target + offset
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,9 +30,15 @@ public class ArrowDestroyer : MonoBehaviour
         if (collision.CompareTag("ArrowBox"))
         {
             counter.AddFailed();
-            
-            playerMovement.addEnergy(-10);
+
+            playerMovement.addEnergy(-25);
             playerMovement.AddCombo(false);
+
+            //if (playerMovement != null && playerMovement.GetCurrentCollision() == collision)
+            //{
+            //    playerMovement.ClearCollision();
+            //}
+
             Destroy(collision.gameObject);
         }
     }

@@ -9,6 +9,7 @@ TagManager:
   - FinishLine
   - SwitchBox
   - DeathBox
+  - ScoreBox
   layers:
   - Default
   - TransparentFX
