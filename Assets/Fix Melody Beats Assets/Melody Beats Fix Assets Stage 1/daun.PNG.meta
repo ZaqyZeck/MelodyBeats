@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: ce9cf214e27e74842993c40f6574f2e3
+guid: a2805cbeee9073b4f81af59d8e7a4537
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2096474659342433813
-    second: pohon_0
+      213: -1769083397474100946
+    second: daun_0
   - first:
-      213: 7809998425821254898
-    second: pohon_1
+      213: 5656251821415400176
+    second: daun_1
   - first:
-      213: -4011794335302605906
-    second: pohon_2
+      213: 6745105509274841767
+    second: daun_2
   - first:
-      213: -2963234748702838333
-    second: pohon_3
+      213: 3485318593955311679
+    second: daun_3
   - first:
-      213: -5920181912664177988
-    second: pohon_4
+      213: -30214443910849436
+    second: daun_4
   - first:
-      213: -6158088727784302981
-    second: pohon_5
-  - first:
-      213: -7098841905799095981
-    second: pohon_6
-  - first:
-      213: 5883187554409683395
-    second: pohon_7
-  - first:
-      213: -6425138783751834766
-    second: pohon_8
+      213: 4066978097192590384
+    second: daun_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -137,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pohon_0
+      name: daun_0
       rect:
         serializedVersion: 2
-        x: 149
-        y: 824
-        width: 478
-        height: 803
+        x: 85
+        y: 243
+        width: 30
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 51eb6b6589c281d10800000000000000
-      internalID: 2096474659342433813
+      spriteID: e29d383e504f277e0800000000000000
+      internalID: -1769083397474100946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pohon_1
+      name: daun_1
       rect:
         serializedVersion: 2
-        x: 953
-        y: 824
-        width: 478
-        height: 803
+        x: 255
+        y: 246
+        width: 29
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f49f6b6030b26c60800000000000000
-      internalID: 7809998425821254898
+      spriteID: 0f20f9f301b0f7e40800000000000000
+      internalID: 5656251821415400176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pohon_2
+      name: daun_2
       rect:
         serializedVersion: 2
-        x: 1750
-        y: 866
-        width: 467
-        height: 677
+        x: 408
+        y: 218
+        width: 39
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ea32d54be4e3358c0800000000000000
-      internalID: -4011794335302605906
+      spriteID: 7a27bdc39bd6b9d50800000000000000
+      internalID: 6745105509274841767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pohon_3
+      name: daun_3
       rect:
         serializedVersion: 2
-        x: 394
-        y: 783
-        width: 19
-        height: 25
+        x: 61
+        y: 59
+        width: 49
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c1397922b970e6d0800000000000000
-      internalID: -2963234748702838333
+      spriteID: f3035c19bc65e5030800000000000000
+      internalID: 3485318593955311679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pohon_4
+      name: daun_4
       rect:
         serializedVersion: 2
-        x: 1198
-        y: 783
-        width: 19
-        height: 25
+        x: 236
+        y: 47
+        width: 62
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb285f9bae947dda0800000000000000
-      internalID: -5920181912664177988
+      spriteID: 46c9b939f18a49ff0800000000000000
+      internalID: -30214443910849436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pohon_5
+      name: daun_5
       rect:
         serializedVersion: 2
-        x: 170
-        y: 29
-        width: 467
-        height: 677
+        x: 348
+        y: 47
+        width: 119
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,74 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b765415dde21a8aa0800000000000000
-      internalID: -6158088727784302981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pohon_6
-      rect:
-        serializedVersion: 2
-        x: 1040
-        y: 45
-        width: 415
-        height: 678
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3591030e5e8db7d90800000000000000
-      internalID: -7098841905799095981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pohon_7
-      rect:
-        serializedVersion: 2
-        x: 1798
-        y: 60
-        width: 365
-        height: 678
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3c9969709e745a150800000000000000
-      internalID: 5883187554409683395
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pohon_8
-      rect:
-        serializedVersion: 2
-        x: 2226
-        y: 103
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 273f2e9615255d6a0800000000000000
-      internalID: -6425138783751834766
+      spriteID: 03c5578180fc07830800000000000000
+      internalID: 4066978097192590384
       vertices: []
       indices: 
       edges: []
@@ -347,16 +272,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pohon_0: 2096474659342433813
-      pohon_1: 7809998425821254898
-      pohon_2: -4011794335302605906
-      pohon_3: -2963234748702838333
-      pohon_4: -5920181912664177988
-      pohon_5: -6158088727784302981
-      pohon_6: -7098841905799095981
-      pohon_7: 5883187554409683395
-      pohon_8: -6425138783751834766
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

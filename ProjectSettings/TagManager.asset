@@ -43,8 +43,23 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackLight
+    uniqueID: 3959427759
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Layer 1
+    uniqueID: 1888585913
+    locked: 0
+  - name: Layer 2
+    uniqueID: 3766403039
+    locked: 0
+  - name: Layer 3
+    uniqueID: 3650014003
+    locked: 0
+  - name: Player
+    uniqueID: 1502448653
     locked: 0
   m_RenderingLayers:
   - Default
