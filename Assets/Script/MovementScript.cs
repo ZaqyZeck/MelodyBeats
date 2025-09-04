@@ -39,8 +39,14 @@ public class MovementScript : MonoBehaviour
     {
         // arah awal: kanan +45 derajat
         SetDirection(45f);
-        planeMode = true;
-        arrowMode = false;
+        //planeMode = true;
+        //arrowMode = false;
+
+        if (arrowMode)
+        {
+            blockBody.gravityScale = 3;
+            sprite.rotation = Quaternion.identity;
+        }
 
         CreateLinePoint();
     }
@@ -226,8 +232,8 @@ public class MovementScript : MonoBehaviour
         if (energy < 0) 
         {
             energy = 0;
-            gameManager.FinishGame();
-            canMove = false;
+            //gameManager.FinishGame();
+            //canMove = false;
         } 
 
         float maxWidth = 500f;
