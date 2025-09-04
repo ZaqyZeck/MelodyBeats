@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gunung_0: -8424549856602659726
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

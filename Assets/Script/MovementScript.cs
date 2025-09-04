@@ -32,6 +32,9 @@ public class MovementScript : MonoBehaviour
     [SerializeField] private RectTransform energtUI;
     //[SerializeField] private ParticleSystem dust;
 
+    [SerializeField] private GameObject[] testPrefab = new GameObject[4];
+    [SerializeField] private GameObject arrowsParent;
+
     void Start()
     {
         // arah awal: kanan +45 derajat
@@ -73,6 +76,16 @@ public class MovementScript : MonoBehaviour
         else
         {
             //transform.position += (Vector3)(Vector2.right * speed * Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // pilih index random dari 0 sampai panjang array
+                int randomIndex = Random.Range(0, testPrefab.Length);
+
+                GameObject testObject = Instantiate(testPrefab[randomIndex]);
+
+                testObject.transform.SetParent(arrowsParent.transform);
+                testObject.transform.position = transform.position;
+            }
 
             if (currentCollision == null) return;
 
