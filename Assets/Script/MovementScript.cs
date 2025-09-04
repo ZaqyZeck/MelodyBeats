@@ -223,7 +223,12 @@ public class MovementScript : MonoBehaviour
     {
         energy -= Time.deltaTime * 10;
 
-        if (energy < 0) energy = 0;
+        if (energy < 0) 
+        {
+            energy = 0;
+            gameManager.FinishGame();
+            canMove = false;
+        } 
 
         float maxWidth = 500f;
         Vector2 size = energtUI.sizeDelta;
