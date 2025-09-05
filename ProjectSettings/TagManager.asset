@@ -10,6 +10,7 @@ TagManager:
   - SwitchBox
   - DeathBox
   - ScoreBox
+  - StartMusicBox
   layers:
   - Default
   - TransparentFX

@@ -82,16 +82,16 @@ public class MovementScript : MonoBehaviour
         else
         {
             //transform.position += (Vector3)(Vector2.right * speed * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                // pilih index random dari 0 sampai panjang array
-                int randomIndex = Random.Range(0, testPrefab.Length);
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    // pilih index random dari 0 sampai panjang array
+            //    int randomIndex = Random.Range(0, testPrefab.Length);
 
-                GameObject testObject = Instantiate(testPrefab[randomIndex]);
+            //    GameObject testObject = Instantiate(testPrefab[randomIndex]);
 
-                testObject.transform.SetParent(arrowsParent.transform);
-                testObject.transform.position = transform.position;
-            }
+            //    testObject.transform.SetParent(arrowsParent.transform);
+            //    testObject.transform.position = transform.position;
+            //}
 
             if (currentCollision == null) return;
 
@@ -124,6 +124,7 @@ public class MovementScript : MonoBehaviour
         {
             gameManager.FinishGame();
             canMove = false;
+            MusicManager.instance.StopSound();
         }
         else if(currentCollision.gameObject.CompareTag("SwitchBox"))
         {
@@ -133,12 +134,18 @@ public class MovementScript : MonoBehaviour
         {
             gameManager.FinishGame();
             canMove = false;
+            MusicManager.instance.StopSound();
+        }
+        else if (currentCollision.gameObject.CompareTag("StartMusicBox"))
+        {
+            string musicName = currentCollision.gameObject.name;
+            MusicManager.instance.PlaySound(musicName);
         }
         //else if (collision.gameObject.CompareTag("ScoreBox"))
         //{
-            
+
         //}
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -232,8 +239,9 @@ public class MovementScript : MonoBehaviour
         if (energy < 0) 
         {
             energy = 0;
-            //gameManager.FinishGame();
-            //canMove = false;
+            MusicManager.instance.StopSound();
+            gameManager.FinishGame();
+            canMove = false;
         } 
 
         float maxWidth = 500f;
