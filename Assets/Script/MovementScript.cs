@@ -227,13 +227,13 @@ public class MovementScript : MonoBehaviour
 
     private void SetEnergyUI()
     {
-        energy -= Time.deltaTime * 10;
+         if (arrowMode) energy -= Time.deltaTime * 10;
 
         if (energy < 0) 
         {
             energy = 0;
-            //gameManager.FinishGame();
-            //canMove = false;
+            gameManager.FinishGame();
+            canMove = false;
         } 
 
         float maxWidth = 500f;
