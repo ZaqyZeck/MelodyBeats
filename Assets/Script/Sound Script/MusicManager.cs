@@ -38,6 +38,7 @@ public class MusicManager : MonoBehaviour
     {
         volumeValue = musicSlider.value;
         SetMainMenuVolume();
+        SaveVolumeValue();
     }
 
     public void SetMainMenuVolume()
