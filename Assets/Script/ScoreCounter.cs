@@ -58,7 +58,7 @@ public class ScoreCounter : MonoBehaviour
         }
         else combo = 0;
         if (textCombo == null) return;
-        textCombo.text = $"Combo = {combo}";
+        textCombo.text = $"{combo}";
     }
 
     public void UpdateScoreCounter()
@@ -66,7 +66,7 @@ public class ScoreCounter : MonoBehaviour
         foreach (var text in scoreCounter)
         {
             if (text != null)
-                text.text = $"Score = {scoreController.currentScore}";
+                text.text = $"{scoreController.currentScore}";
         }
     }
 
