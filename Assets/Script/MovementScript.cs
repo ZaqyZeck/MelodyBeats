@@ -35,6 +35,7 @@ public class MovementScript : MonoBehaviour
     [SerializeField] private GameObject[] testPrefab = new GameObject[4];
     [SerializeField] private GameObject arrowsParent;
     [SerializeField] private AudioSource gameMusic;
+    [SerializeField] private GameObject StaminaUI;
 
     void Start()
     {
@@ -233,6 +234,7 @@ public class MovementScript : MonoBehaviour
             blockBody.gravityScale = 3;
             sprite.rotation = Quaternion.identity;
             staminaStart = true;
+            StaminaUI.SetActive(true);
             //dust.Play(true);
             
         }  
