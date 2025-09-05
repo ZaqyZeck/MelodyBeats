@@ -21,7 +21,7 @@ public class ScoreCounter : MonoBehaviour
     public int success, failed, perfect;
 
     public int combo;
-    [SerializeField] private Text textCombo;
+    [SerializeField] private TMP_Text textCombo;
 
     public void AddSuccess()
     {
