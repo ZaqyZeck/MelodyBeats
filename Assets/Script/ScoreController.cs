@@ -18,9 +18,10 @@ public class ScoreController : MonoBehaviour
         scores.Sort((a, b) => b.score.CompareTo(a.score));
     }
 
-    public void SaveScores()
+    public void SaveScores(int musicNumber)
     {
-        SaveSystem.SaveScoresData(scores);
+        if (musicNumber == 1) SaveSystem.SaveScoresData(scores);
+        else SaveSystem.SaveScoresDataDua(scores);
     }
 
     public void DeleteAllScores()
@@ -28,9 +29,11 @@ public class ScoreController : MonoBehaviour
         SaveSystem.DeleteScoresData();
     }
 
-    public void LoadSaveScores()
+    public void LoadSaveScores(int musicNumber)
     {
-        ScoresData scoresData = SaveSystem.LoadScores();
+        ScoresData scoresData;
+        if (musicNumber == 1) scoresData = SaveSystem.LoadScores();
+        else scoresData = SaveSystem.LoadScoresDua();
         scores.Clear();
 
         if (scoresData == null) return;

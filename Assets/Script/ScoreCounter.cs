@@ -70,13 +70,13 @@ public class ScoreCounter : MonoBehaviour
         }
     }
 
-    public void SetScore()
+    public void SetScore(int musicNumber)
     {
         string name = playerNameInput.text;
         scoreController.playerName = name;
-        scoreController.LoadSaveScores();
+        scoreController.LoadSaveScores(musicNumber);
         scoreController.AddScore();
-        scoreController.SaveScores();
+        scoreController.SaveScores(musicNumber);
     }
 
     public void SetScoreTime()
