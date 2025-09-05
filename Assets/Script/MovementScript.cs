@@ -9,7 +9,7 @@ public class MovementScript : MonoBehaviour
     public float speed = 1f, perfectDistance = 0.3f;
     public bool moveUp = true;
 
-    public bool planeMode, arrowMode;// toggle untuk arah
+    public bool planeMode, arrowMode, staminaStart;// toggle untuk arah
     private Vector2 direction;
 
     //Dari RhytehmArrowMovement:
@@ -34,6 +34,7 @@ public class MovementScript : MonoBehaviour
 
     [SerializeField] private GameObject[] testPrefab = new GameObject[4];
     [SerializeField] private GameObject arrowsParent;
+    [SerializeField] private AudioSource gameMusic;
 
     void Start()
     {
@@ -124,7 +125,7 @@ public class MovementScript : MonoBehaviour
         {
             gameManager.FinishGame();
             canMove = false;
-            MusicManager.instance.StopSound();
+            gameMusic.Stop();
         }
         else if(currentCollision.gameObject.CompareTag("SwitchBox"))
         {
@@ -134,12 +135,13 @@ public class MovementScript : MonoBehaviour
         {
             gameManager.FinishGame();
             canMove = false;
-            MusicManager.instance.StopSound();
+            gameMusic.Stop();
         }
         else if (currentCollision.gameObject.CompareTag("StartMusicBox"))
         {
             string musicName = currentCollision.gameObject.name;
-            MusicManager.instance.PlaySound(musicName);
+            //MusicManager.instance.PlaySound(musicName);
+            gameMusic.Play();
         }
         //else if (collision.gameObject.CompareTag("ScoreBox"))
         //{
@@ -217,6 +219,7 @@ public class MovementScript : MonoBehaviour
             //transform.rotation = Quaternion.identity; // kenapa saat aku tambahkan kode ini method jadi rusak
             blockBody.gravityScale = 3;
             sprite.rotation = Quaternion.identity;
+            staminaStart = true;
             //dust.Play(true);
             
         }  
@@ -234,12 +237,12 @@ public class MovementScript : MonoBehaviour
 
     private void SetEnergyUI()
     {
-         if (arrowMode) energy -= Time.deltaTime * 10;
+         if (arrowMode && staminaStart) energy -= Time.deltaTime * 10;
 
         if (energy < 0) 
         {
             energy = 0;
-            MusicManager.instance.StopSound();
+            gameMusic.Stop();
             gameManager.FinishGame();
             canMove = false;
         } 
