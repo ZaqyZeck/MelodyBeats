@@ -43,6 +43,17 @@ public class MovementScript : MonoBehaviour
         //planeMode = true;
         //arrowMode = false;
 
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            gameMusic.volume = PlayerPrefs.GetFloat("MusicVolume");
+        }
+        else
+        {
+            gameMusic.volume = 1.0f; // default volume
+            PlayerPrefs.SetFloat("MusicVolume", 1.0f);
+            PlayerPrefs.Save();
+        }
+
         if (arrowMode)
         {
             blockBody.gravityScale = 3;
