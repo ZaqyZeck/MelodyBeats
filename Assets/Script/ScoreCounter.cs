@@ -82,7 +82,7 @@ public class ScoreCounter : MonoBehaviour
     public void SetScoreTime()
     {
         scoreController.finishTime = DateTime.Now;
-        timeCounter.text = $"Time = {scoreController.finishTime:HH:mm:ss}";
+        timeCounter.text = $"Time : {scoreController.finishTime:HH:mm:ss}";
     }
 
     public void ShowAllScores()
