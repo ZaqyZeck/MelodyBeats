@@ -57,6 +57,7 @@ public class ScoreCounter : MonoBehaviour
 
         }
         else combo = 0;
+        if (textCombo == null) return;
         textCombo.text = $"Combo = {combo}";
     }
 

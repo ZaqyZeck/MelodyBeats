@@ -31,7 +31,7 @@ public class ArrowDestroyer : MonoBehaviour
         {
             counter.AddFailed();
 
-            playerMovement.addEnergy(-25);
+            playerMovement.addEnergy(-20);
             playerMovement.AddCombo(false);
 
             //if (playerMovement != null && playerMovement.GetCurrentCollision() == collision)

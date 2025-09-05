@@ -167,12 +167,12 @@ public class MovementScript : MonoBehaviour
     {
         if (CheckDistance(currentCollision.gameObject))
         {
-            addEnergy(20);
+            addEnergy(30);
             counter.AddPerfect();
         }  
         else
         {
-            addEnergy(10);
+            addEnergy(20);
             counter.AddSuccess();
         }
 
@@ -232,8 +232,8 @@ public class MovementScript : MonoBehaviour
         if (energy < 0) 
         {
             energy = 0;
-            gameManager.FinishGame();
-            canMove = false;
+            //gameManager.FinishGame();
+            //canMove = false;
         } 
 
         float maxWidth = 500f;
