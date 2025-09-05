@@ -212,6 +212,8 @@ public class MovementScript : MonoBehaviour
         if (planeMode)
         {
             blockBody.gravityScale = 0;
+            float angle = 45f;
+            sprite.rotation = Quaternion.Euler(0f, 0f, angle);
             //dust.Pause();
         }   
         else
