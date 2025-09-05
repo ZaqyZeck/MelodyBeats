@@ -20,7 +20,7 @@ public static class SaveSystem
     public static void SaveScoresDataDua(List<Score> scores)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/score2.dt";
+        string path = Application.persistentDataPath + "/scoreDua.dt";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         ScoresData scoresData = new ScoresData(scores);
@@ -63,7 +63,7 @@ public static class SaveSystem
 
     public static ScoresData LoadScoresDua()
     {
-        string path = Application.persistentDataPath + "/score2.dt";
+        string path = Application.persistentDataPath + "/scoreDua.dt";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
